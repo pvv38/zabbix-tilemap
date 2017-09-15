@@ -120,7 +120,8 @@ function getFontComboBox($name) {
 							MAP_LABEL_LOC_BOTTOM => _('Bottom'),
 							MAP_LABEL_LOC_LEFT => _('Left'),
 							MAP_LABEL_LOC_RIGHT => _('Right'),
-							MAP_LABEL_LOC_TOP => _('Top')
+							MAP_LABEL_LOC_TOP => _('Top'),
+							MAP_LABEL_LOC_TILE => _('Tile')
 						])
 					)
 					->addRow(_('Host group'),
@@ -578,7 +579,8 @@ function getFontComboBox($name) {
 							MAP_LABEL_LOC_BOTTOM => _('Bottom'),
 							MAP_LABEL_LOC_LEFT => _('Left'),
 							MAP_LABEL_LOC_RIGHT => _('Right'),
-							MAP_LABEL_LOC_TOP => _('Top')
+							MAP_LABEL_LOC_TOP => _('Top'),
+							MAP_LABEL_LOC_TILE => _('Tile')
 						]))->setId('massLabelLocation')
 					)
 					->addRow(

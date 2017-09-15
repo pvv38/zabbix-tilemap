@@ -1696,6 +1696,10 @@ function processAreasCoordinates(array &$map, array $areas, array $mapInfo) {
 					$newX = $area['x'] + ($xOffset / 2) - ($iconX / 2);
 					$newY = $area['y'] + abs($iconX - $iconY) / 2 + $borderOffset;
 					break;
+				case MAP_LABEL_LOC_TILE:
+					$newX = $area['x'] + $iconX;
+					$newY = $area['y'] + $iconY;
+					break;
 			}
 
 			$map['selements'][$selementId]['x'] = $newX + ($colNum * $xOffset);

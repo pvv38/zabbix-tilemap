@@ -29,7 +29,7 @@ class CScreenEvents extends CScreenBase {
 	public function get() {
 		$config = select_config();
 
-		$table = (new CTableInfo())->setHeader([_('Time'), _('Recovery time'), _('Host'), _('Description'), _('Value'),
+		$table = (new CTableInfo())->setHeader([_('Time'), /*_('Recovery time'),*/ _('Host'), _('Description'), _('Value'),
 			_('Severity')
 		]);
 
@@ -144,7 +144,7 @@ class CScreenEvents extends CScreenBase {
 
 			$table->addRow([
 				zbx_date2str(DATE_TIME_FORMAT_SECONDS, $event['clock']),
-				($event['r_eventid'] == 0) ? '' : zbx_date2str(DATE_TIME_FORMAT_SECONDS, $event['r_clock']),
+				//($event['r_eventid'] == 0) ? '' : zbx_date2str(DATE_TIME_FORMAT_SECONDS, $event['r_clock']),
 				$host['name'],
 				new CLink(
 					$trigger['description'],

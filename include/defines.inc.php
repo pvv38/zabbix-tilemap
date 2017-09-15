@@ -338,6 +338,7 @@ define('MAP_LABEL_LOC_BOTTOM',	0);
 define('MAP_LABEL_LOC_LEFT',	1);
 define('MAP_LABEL_LOC_RIGHT',	2);
 define('MAP_LABEL_LOC_TOP',		3);
+define('MAP_LABEL_LOC_TILE',		4);
 
 define('SYSMAP_ELEMENT_TYPE_HOST',		0);
 define('SYSMAP_ELEMENT_TYPE_MAP',		1);

@@ -546,6 +546,7 @@ SVGMapElement.LABEL_POSITION_BOTTOM		= 0;
 SVGMapElement.LABEL_POSITION_LEFT		= 1;
 SVGMapElement.LABEL_POSITION_RIGHT		= 2;
 SVGMapElement.LABEL_POSITION_TOP		= 3;
+SVGMapElement.LABEL_POSITION_TILE		= 4;
 
 /**
  * Remove part (item) of an element.
@@ -757,19 +758,28 @@ SVGMapElement.prototype.updateLabel = function() {
 			anchor.horizontal = 'center';
 			anchor.vertical = 'bottom';
 			break;
+		case SVGMapElement.LABEL_POSITION_TILE:
+			y = this.y; //y - this.height /2;
+			x = this.x+5; // + this.width / 2;
+			anchor.horizontal = 'left';
+			anchor.vertical = 'top';
+			break;
 	}
 
 	if (this.options.label !== null) {
-		var element = this.map.layers.elements.add('textarea', {
+	        var attr = {
 			'x': x,
 			'y': y,
 			fill: '#' + this.map.options.theme.textcolor,
-			'anchor': anchor,
-			background: {
+			'anchor': anchor
+		};
+		if (this.options.label_location !== SVGMapElement.LABEL_POSITION_TILE) {
+		  attr.background = {
 				fill: '#' + this.map.options.theme.backgroundcolor,
 				opacity: 0.5
-			}
-		}, this.options.label);
+			};
+		}
+		var element = this.map.layers.elements.add('textarea', attr, this.options.label);
 
 		this.removeItem('label');
 		this.label = element;

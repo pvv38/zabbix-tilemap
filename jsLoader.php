@@ -58,6 +58,7 @@ $availableJScripts = [
 	'dom.js' => '',
 	'servercheck.js' => '',
 	'flickerfreescreen.js' => '',
+	'fullscreen.js' => '',
 	'multiselect.js' => '',
 	'chkbxrange.js' => '',
 	// vendors

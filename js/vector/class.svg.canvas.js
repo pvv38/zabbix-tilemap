@@ -387,14 +387,20 @@ SVGTextArea.prototype.parseContent = function(content, parse_links) {
 				if (parse_links === true) {
 					wrapped = SVGTextArea.parseLinks(wrapped);
 				}
-
+				
+				var attr = { x: this.offset, 'text-anchor': anchor };
+				
+				if ( line.content.charAt(0) === '#' ) {
+				    skip = +line.content.charAt(3) +'.'+ +line.content.charAt(4);
+				    attr['font-size'] = +line.content.substring(1,3)+'px';
+				    attr['fill'] = 'black';
+				}
+				
+				attr.dy = skip + 'em';
+								
 				this.lines.push({
 					type: 'tspan',
-					attributes: SVGElement.mergeAttributes({
-						x: this.offset,
-						dy: skip + 'em',
-						'text-anchor': anchor
-					}, line.attributes),
+					attributes: SVGElement.mergeAttributes(attr, line.attributes),
 					content: wrapped
 				});
 
@@ -544,6 +550,17 @@ SVGTextArea.prototype.create = function(attributes, parent, content) {
 	}
 
 	this.parseContent(content, parse_links);
+	var i;
+	var delFlag = false;
+	for ( i = 0; i < this.lines.length ; i++ ){
+	    if ( this.lines[i].content.charAt(0) === '#' ){
+	        delFlag = true;
+		this.lines[i].content = this.lines[i].content.substring(6);
+	    }
+	}
+	if ( delFlag ){
+	    delete this.lines[this.lines.length-1];
+	}
 	this.text = this.element.add('text', attributes, this.lines);
 
 	size = this.text.element.getBBox();
